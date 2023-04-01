@@ -1,19 +1,23 @@
 import React from 'react';
 import './parametrRadio.style.css';
 
-const ParametrRadio = (props) => (
-  <div className="parametr__type-radio">
-    <input
-      type="radio"
-      id={props.id}
-      name={props.name}
-      value={props.value}
-      defaultChecked={props.checked}
-      onChange={props.changeValue}
-    />
+const ParametrRadio = (props) => {
+  const { id, name, value, checked, changeValue, realName } = props;
 
-    <label htmlFor={props.id}>{props.realName}</label>
-  </div>
-);
+  return (
+    <div className="parametr__type-radio">
+      <input
+        type="radio"
+        id={id}
+        name={name}
+        value={value}
+        defaultChecked={checked}
+        onChange={changeValue}
+      />
+
+      <label htmlFor={id}>{realName}</label>
+    </div>
+  );
+};
 
 export default ParametrRadio;

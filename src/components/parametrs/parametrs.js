@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Parametr from '../parametr/parametr';
 import ParametrOptions from '../parametrOptions/parametrOptions';
 import ParametrRadios from '../parametrRadios/parametrRadios';
@@ -22,14 +22,80 @@ const Parametrs = (props) => {
   console.log('config', config);
 
   const [valueMaterial, setValueMaterial] = useState('metal');
-  const [valueList, setValueList] = useState();
-  const [valuePipe, setValuePipe] = useState();
-  const [valueFrame, setValueFrame] = useState();
-  const [valueSizes, setValueSizes] = useState({});
+  const [valueList, setValueList] = useState('data_0');
+  const [valuePipe, setValuePipe] = useState('data_12');
+  const [valueFrame, setValueFrame] = useState('light');
+  const [valueSizes, setValueSizes] = useState({ length: 5, width: 5 });
 
   const changeValue = (setState) => (e) => {
     console.log('valueRadio  ', e.target.value);
     setState(e.target.value);
+  };
+
+  const calculate = () => {
+    const W = valueSizes.width;
+    const L = valueSizes.length;
+
+    const pipe = data.find((item) => item.id === valuePipe);
+    const list = data.find((item) => item.id === valueList);
+    const frame = config.find((item) => item.key === valueFrame);
+    const fixConfig = config.find(
+      (item) => item.key === valueMaterial && item.type === 'fix'
+    );
+    const fixData = data.find((item) => item.type === 'fix');
+
+    const countPipeW = Math.ceil(W / (frame.step + pipe.width / 1000)) + 1;
+    const countPipeL = Math.ceil(L / (frame.step + pipe.width / 1000)) + 1;
+
+    const Wc = (W / (countPipeW - 1)).toFixed(2);
+    const Lc = (L / (countPipeL - 1)).toFixed(2);
+
+    const longPipe = +(countPipeW * W + countPipeL * L).toFixed(1);
+    const pricePipe = (longPipe * pipe.price).toFixed(2);
+
+    const SList = +(W * L).toFixed(1);
+    const priceList = (SList * (list.price / list.width)).toFixed(2);
+
+    const countFix = Math.ceil(SList * fixConfig.value);
+    const priceFix = (countFix * fixData.price).toFixed(2);
+
+    console.log({
+      W,
+      L,
+      pipe,
+      list,
+      frame,
+      countPipeW,
+      countPipeL,
+      longPipe,
+      SList,
+      pricePipe,
+      priceList,
+      countFix,
+      priceFix,
+      fixConfig,
+      fixData,
+    });
+
+    return {
+      sum: (+pricePipe + +priceList + +priceFix).toFixed(2),
+      cell: `${Wc}м х ${Lc}м`,
+      rows: [
+        { name: list.name, unit: list.unit, quantity: SList, sum: priceList },
+        {
+          name: pipe.name,
+          unit: pipe.unit,
+          quantity: longPipe,
+          sum: pricePipe,
+        },
+        {
+          name: fixData.name,
+          unit: fixData.unit,
+          quantity: countFix,
+          sum: priceFix,
+        },
+      ],
+    };
   };
 
   return (
@@ -85,7 +151,14 @@ const Parametrs = (props) => {
         />
       </Parametr>
 
-      <button className="btn">Сделать расчет</button>
+      <button
+        className="btn"
+        onClick={() => {
+          props.setResult(calculate());
+        }}
+      >
+        Сделать расчет
+      </button>
     </div>
   );
 };
