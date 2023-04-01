@@ -1,0 +1,62 @@
+input[type='number'] {
+  margin: 1rem;
+  padding: 7px;
+  border: none;
+  border: 3px solid salmon;
+  outline-color: #ff2f17;
+
+  font-size: 15px;
+}
+
+.parametr__type-range {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 60%;
+}
+
+/***** Track Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type='range']::-webkit-slider-runnable-track {
+  background: salmon;
+  height: 0.5rem;
+  border-radius: 0.2rem;
+}
+
+/***** Track Styles *****/
+/******** Firefox ********/
+input[type='range']::-moz-range-track {
+  background: salmon;
+  height: 0.5rem;
+  border-radius: 0.2rem;
+}
+
+/***** Thumb Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -12px; /* Centers thumb on the track */
+  background-color: #ff2f17;
+  height: 2rem;
+  width: 1rem;
+  border-radius: 1rem;
+}
+
+/***** Thumb Styles *****/
+/***** Firefox *****/
+input[type='range']::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0; /*Removes default border-radius that FF applies*/
+  background-color: #ff2f17;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 1rem;
+}

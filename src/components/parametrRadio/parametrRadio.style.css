@@ -1,0 +1,9 @@
+.parametr__type-radio {
+  padding: 0.4rem 0.7rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  border: 2px solid salmon;
+  border-radius: 0.4rem;
+  background-color: salmon;
+  color: white;
+  font-weight: bolder;
+}

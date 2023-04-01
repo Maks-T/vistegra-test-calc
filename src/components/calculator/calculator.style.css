@@ -1,0 +1,21 @@
+.calculator {
+  margin-top: 2rem;
+  padding: 1rem;
+  -webkit-box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.calculator__body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.calculator__body-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 0;
+}

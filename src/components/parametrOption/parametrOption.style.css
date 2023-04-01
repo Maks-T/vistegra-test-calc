@@ -1,0 +1,7 @@
+.parametr__option-radio {
+  max-width: 30%;
+  padding: 0.4rem;
+  margin: 0.4rem 0.4rem 0.4rem 0;
+  border: 1px solid salmon;
+  border-radius: 0.2rem;
+}
