@@ -9,6 +9,8 @@ import './parametrs.style.css';
 import ParametrSizes from '../parametrSizes/parametrSizes';
 
 const Parametrs = (props) => {
+  const canvasRef = React.useRef();
+
   data = data.map((item, i) => {
     item.id = `data_${i}`;
     return item;
@@ -95,6 +97,15 @@ const Parametrs = (props) => {
           sum: priceFix,
         },
       ],
+      draw: {
+        L,
+        W,
+        Wc,
+        Lc,
+        countPipeW,
+        countPipeL,
+        pipeWidth: pipe.width / 1000,
+      },
     };
   };
 

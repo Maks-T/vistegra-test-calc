@@ -13,9 +13,12 @@ const ParametrRadio = (props) => {
         value={value}
         defaultChecked={checked}
         onChange={changeValue}
+        className="parametr__type-radio-input"
       />
 
-      <label htmlFor={id}>{realName}</label>
+      <label htmlFor={id} className="parametr__type-radio-label">
+        {realName}
+      </label>
     </div>
   );
 };

@@ -10,9 +10,12 @@ const ParametrOption = (props) => (
       value={props.value}
       defaultChecked={props.checked}
       onChange={props.changeValue}
+      className="parametr__option-radio-input"
     />
 
-    <label htmlFor={props.id}>{props.realName}</label>
+    <label htmlFor={props.id} className="parametr__option-radio-label">
+      {props.realName}
+    </label>
   </div>
 );
 
