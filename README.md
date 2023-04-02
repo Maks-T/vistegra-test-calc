@@ -8,7 +8,7 @@
 
 ### Task Description
 
-[https://github.com/Vistegra/test-calc-js](https://github.com/Vistegra/test-calc-js)
+- [https://github.com/Vistegra/test-calc-js](https://github.com/Vistegra/test-calc-js)
 
 ### Launch the app
 
