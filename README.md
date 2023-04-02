@@ -4,7 +4,7 @@
 
 ### deploy
 
-- ``
+- `https://VistegraCalc.maks-t.repl.co`
 
 ### Launch the app
 
