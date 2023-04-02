@@ -11,9 +11,7 @@ function App() {
         <div className="App">
           <Header />
           <main className="main">
-            <div className="App_wrapper">
-              <Calculator />
-            </div>
+            <Calculator />
           </main>
           <Footer />
         </div>
