@@ -1,43 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Drawing from '../drawing/drawing';
+import ResultsTable from '../resultsTable/resultsTable';
+import { StateContext } from './../reducerProvider/reducerProvider';
 import './results.style.css';
 
 const Results = (props) => {
   const { result } = props;
+  const { dispatch } = useContext(StateContext);
+  const [isCheckout, setIsCheckout] = useState(false);
 
-  console.log(result);
+  useEffect(() => {
+    setIsCheckout(false);
+  }, [result]);
+
   return (
     <div className="results">
       <h3 className="results__title">Результаты расчета</h3>
       {result && (
         <div className="results__body">
-          <table>
-            <thead>
-              <tr>
-                <th>Наименование</th>
-                <th>ед.</th>
-                <th>кол-во</th>
-                <th>сумма</th>
-              </tr>
-            </thead>
-            <tbody>
-              {result.rows.map((row, i) => {
-                const { name, unit, quantity, sum } = row;
-                return (
-                  <tr key={'row_' + i}>
-                    <td>{name}</td>
-                    <td>{unit}</td>
-                    <td>{quantity}</td>
-                    <td>{sum}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <ResultsTable result={result} />
           <p className="results__cell">{`Размер ячейки: ${result.cell}`}</p>
           <p className="results__summary">{`Итого: ${result.sum} руб.`}</p>
 
           <Drawing drawData={result.draw} />
+          {!isCheckout ? (
+            <button
+              className="btn"
+              onClick={() => {
+                result.id = new Date().getTime();
+                dispatch({ type: 'ADD_PRODUCT_TO_CART', payload: result });
+                setIsCheckout(true);
+              }}
+            >
+              Заказать
+            </button>
+          ) : (
+            <p className="results__checkout">Вы оформили заказ!</p>
+          )}
         </div>
       )}
     </div>

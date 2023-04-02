@@ -1,0 +1,44 @@
+table {
+  width: 100%;
+  margin-bottom: 20px;
+
+  border: 5px solid #fff;
+  border-top: 5px solid #fff;
+  border-bottom: 3px solid #fff;
+  border-collapse: collapse;
+  outline: 3px solid salmon;
+
+  background: #fff;
+
+  font-size: 15px;
+}
+
+table th {
+  padding: 7px;
+
+  border: none;
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid salmon;
+
+  background: salmon;
+
+  font-size: 0.8rem;
+  text-align: left;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+table td {
+  padding: 7px;
+
+  border: none;
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+table tbody tr:nth-child(even) {
+  background: #f8f8f8 !important;
+}

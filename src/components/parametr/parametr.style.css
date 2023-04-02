@@ -1,6 +1,7 @@
 .parametr {
   margin-top: 0.5rem;
   padding: 0.5rem;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.541);
   width: 100%;
+
+  border-bottom: 1px solid rgba(128, 128, 128, 0.541);
 }

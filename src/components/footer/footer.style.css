@@ -1,0 +1,43 @@
+.footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+  height: 60px;
+
+  padding: 15px;
+  margin-top: 1rem;
+
+  background-color: #e7685a;
+}
+
+.footer__wrapper,
+.footer__link-github {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__link-github-icon {
+  display: block;
+  width: 52px;
+  height: 52px;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  background-image: url('./../../assets/github-icon.svg');
+}
+
+.footer__link-github {
+  padding-left: 0.5rem;
+
+  color: white;
+  font-weight: bold;
+  font-family: 'AireExterior';
+  letter-spacing: 0.25rem;
+  font-size: 1.2rem;
+}

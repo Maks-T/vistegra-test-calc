@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
+import Orders from '../orders/orders';
 import Parametrs from '../parametrs/parametrs';
 import Results from '../results/results';
 import './calculator.style.css';
 
 const Calculator = (props) => {
   const [result, setResult] = useState();
-
-  console.log('calc', result);
 
   return (
     <div className="calculator">
@@ -16,7 +15,9 @@ const Calculator = (props) => {
           <Parametrs setResult={setResult} />
           <Results result={result} />
         </div>
-        <div className="calculator__body-bottom"></div>
+        <div className="calculator__body-bottom">
+          <Orders />
+        </div>
       </div>
     </div>
   );

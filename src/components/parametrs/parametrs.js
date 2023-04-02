@@ -2,26 +2,13 @@ import React, { useState } from 'react';
 import Parametr from '../parametr/parametr';
 import ParametrOptions from '../parametrOptions/parametrOptions';
 import ParametrRadios from '../parametrRadios/parametrRadios';
-
-import data from './../../data/data.json';
-import config from './../../data/config.json';
-import './parametrs.style.css';
+import params from './../../data/getData';
+import calculateParams from './calculateParams';
 import ParametrSizes from '../parametrSizes/parametrSizes';
+import './parametrs.style.css';
 
 const Parametrs = (props) => {
-  const canvasRef = React.useRef();
-
-  data = data.map((item, i) => {
-    item.id = `data_${i}`;
-    return item;
-  });
-  config = config.map((item, i) => {
-    item.id = `config_${i}`;
-    return item;
-  });
-
-  console.log('data', data);
-  console.log('config', config);
+  const { data, config } = params;
 
   const [valueMaterial, setValueMaterial] = useState('metal');
   const [valueList, setValueList] = useState('data_0');
@@ -30,83 +17,19 @@ const Parametrs = (props) => {
   const [valueSizes, setValueSizes] = useState({ length: 5, width: 5 });
 
   const changeValue = (setState) => (e) => {
-    console.log('valueRadio  ', e.target.value);
     setState(e.target.value);
   };
 
   const calculate = () => {
-    const W = valueSizes.width;
-    const L = valueSizes.length;
-
-    const pipe = data.find((item) => item.id === valuePipe);
-    const list = data.find((item) => item.id === valueList);
-    const frame = config.find((item) => item.key === valueFrame);
-    const fixConfig = config.find(
-      (item) => item.key === valueMaterial && item.type === 'fix'
+    return calculateParams(
+      data,
+      config,
+      valueMaterial,
+      valueList,
+      valuePipe,
+      valueFrame,
+      valueSizes
     );
-    const fixData = data.find((item) => item.type === 'fix');
-
-    const countPipeW = Math.ceil(W / (frame.step + pipe.width / 1000)) + 1;
-    const countPipeL = Math.ceil(L / (frame.step + pipe.width / 1000)) + 1;
-
-    const Wc = (W / (countPipeW - 1)).toFixed(2);
-    const Lc = (L / (countPipeL - 1)).toFixed(2);
-
-    const longPipe = +(countPipeW * W + countPipeL * L).toFixed(1);
-    const pricePipe = (longPipe * pipe.price).toFixed(2);
-
-    const SList = +(W * L).toFixed(1);
-    const priceList = (SList * (list.price / list.width)).toFixed(2);
-
-    const countFix = Math.ceil(SList * fixConfig.value);
-    const priceFix = (countFix * fixData.price).toFixed(2);
-
-    console.log({
-      W,
-      L,
-      pipe,
-      list,
-      frame,
-      countPipeW,
-      countPipeL,
-      longPipe,
-      SList,
-      pricePipe,
-      priceList,
-      countFix,
-      priceFix,
-      fixConfig,
-      fixData,
-    });
-
-    return {
-      sum: (+pricePipe + +priceList + +priceFix).toFixed(2),
-      cell: `${Wc}м х ${Lc}м`,
-      rows: [
-        { name: list.name, unit: list.unit, quantity: SList, sum: priceList },
-        {
-          name: pipe.name,
-          unit: pipe.unit,
-          quantity: longPipe,
-          sum: pricePipe,
-        },
-        {
-          name: fixData.name,
-          unit: fixData.unit,
-          quantity: countFix,
-          sum: priceFix,
-        },
-      ],
-      draw: {
-        L,
-        W,
-        Wc,
-        Lc,
-        countPipeW,
-        countPipeL,
-        pipeWidth: pipe.width / 1000,
-      },
-    };
   };
 
   return (

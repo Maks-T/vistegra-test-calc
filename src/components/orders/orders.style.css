@@ -1,0 +1,50 @@
+.orders {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 2rem;
+  padding: 1rem 0.5rem 1rem 0;
+
+  border-right: 1px solid rgba(128, 128, 128, 0.541);
+}
+
+.orders__title {
+  margin: 0.4 rem 0;
+}
+
+.order__number {
+  margin: 0.5rem 0;
+}
+.orders__summary {
+  padding: 0.3rem 1rem;
+
+  border-bottom: 2px solid salmon;
+
+  text-align: left;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.orders__cell {
+  padding: 0.3rem 1rem;
+
+  text-align: left;
+  font-weight: bolder;
+  font-size: 0.8rem;
+}
+
+.orders .btn {
+  height: 30px;
+  width: 130px;
+  background-color: salmon;
+
+  font-size: 0.8rem;
+}
+
+.order table th,
+.order table td {
+  padding: 0.2rem;
+
+  text-align: center;
+  font-size: 0.9rem;
+}

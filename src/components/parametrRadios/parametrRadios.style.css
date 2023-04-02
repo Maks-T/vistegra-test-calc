@@ -1,5 +1,7 @@
 .parametr__type-radios {
   display: flex;
   flex-direction: row;
+
+  flex-wrap: wrap;
   padding-top: 0.5rem;
 }

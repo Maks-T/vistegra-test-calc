@@ -2,22 +2,29 @@
   position: relative;
 
   margin: 0.5rem 0.5rem 0.5rem 0;
+
   border: 2px solid salmon;
   border-radius: 0.4rem;
+
   background-color: salmon;
+
   color: white;
   font-weight: bolder;
 }
 
 .parametr__type-radio:hover {
   border: 2px solid salmon;
+
   background-color: #fff;
+
   color: black;
 }
 
 .parametr__type-radio:has(.parametr__type-radio-input:checked) {
   border: 2px solid #ff2f17;
+
   background-color: #fff;
+
   color: black;
 }
 

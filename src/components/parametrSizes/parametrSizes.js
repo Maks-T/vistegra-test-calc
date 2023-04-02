@@ -14,7 +14,10 @@ const ParametrSizes = (props) => {
     <div className="parametr__sizes">
       {props.cfgSizes.map((cfgSize) => (
         <div className="parametr__type-range" key={'size-' + cfgSize.key}>
-          <label htmlFor={`size-${cfgSize.key}`}>
+          <label
+            htmlFor={`size-${cfgSize.key}`}
+            className="parametr__type-range-label"
+          >
             {`${cfgSize.name} - ${valuesRange[cfgSize.key]} м`}
           </label>
           <input
