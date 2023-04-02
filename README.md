@@ -2,9 +2,13 @@
 
 ## Before you start, you must:
 
-### deploy
+### Deploy
 
 - [https://VistegraCalc.maks-t.repl.co](https://VistegraCalc.maks-t.repl.co)
+
+### Task Description
+
+[https://github.com/Vistegra/test-calc-js](https://github.com/Vistegra/test-calc-js)
 
 ### Launch the app
 
@@ -15,6 +19,5 @@
 - `npm run start` - start the project;
 
 the app will be available at `http://localhost:3000/`
-
 
 ![screen_calculator](https://user-images.githubusercontent.com/28530542/229368594-5a875598-95d7-4f5e-ac62-816ae1111d60.PNG)
